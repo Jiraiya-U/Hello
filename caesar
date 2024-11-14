@@ -1,0 +1,60 @@
+#include <cs50.h>
+#include <ctype.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char formula(char c, int key);
+bool check(string s);
+
+int main(int argc, string argv[])
+{
+    int key = atoi(argv[1]);
+    if (argc != 2 || !check(argv[1]))
+    {
+        printf("Usage: ./caesar key\n");
+        return 1;
+    }
+    else{
+            string input = get_string("Enter text: ");
+
+            printf("ciphertext: ");
+
+            for (int i = 0, len = strlen(input); i < len; i++)
+            {
+                printf("%c", formula(input[i], key));
+            }
+            printf("\n");
+
+            return 0;
+    }
+}
+
+bool check(string s)
+{
+    for(int i = 0, len = strlen(s); i < len; i++)
+    {
+        if (!isdigit(s[i]))
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+char formula(char c, int key)
+{
+    key = key % 26;
+     if (isupper(c))
+     {
+       return (c - 'A' + key) % 26 + 'A';
+     }
+     else if (islower(c))
+     {
+       return (c - 'a' + key) % 26 + 'a';
+     }
+     else
+     {
+        return c;
+     }
+}
