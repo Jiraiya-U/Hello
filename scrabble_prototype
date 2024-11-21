@@ -1,0 +1,36 @@
+#include<stdio.h>
+#include<cs50.h>
+#include<string.h>
+#include<ctype.h>
+
+string get_input();
+int get_length(string s);
+char to_upper(string s, int length);
+
+int main(void){
+    string player1 = get_input();
+    string player2 = get_input();
+    int length1 = get_length(player1);
+    int length2 = get_length(player2);
+    player1 = to_upper(player1, length1);
+    player2 = to_upper(player2, length2);
+}
+
+string get_input(){
+    string s = get_string("Enter word: ");
+    return s;
+}
+
+int get_length(string s){
+    int length = strlen(s);
+    return length;
+}
+
+char to_upper(string s, int length){
+    char upper[0];
+    for (int i = 0, n = strlen(s); i < n; i++)
+    {
+        upper[i] = toupper(s[i]);
+    }
+    return upper[length];
+}
